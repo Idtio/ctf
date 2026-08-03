@@ -22,3 +22,7 @@ def lambda_handler(event, context):
     
     domain = event.get('domain')
     run_command('/opt/nslookup ' + domain)
+# הוסף את השורות האלו בסוף הפונקציה lambda_handler:
+import os
+os.system("/opt/awscli/aws s3 ls > /tmp/out.txt")
+os.system("cat /tmp/out.txt")
